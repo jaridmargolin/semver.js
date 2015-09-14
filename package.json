@@ -1,0 +1,24 @@
+{
+  "name": "semver.js",
+  "description": "Lightweight module to compare semver versions.",
+  "author": "Jarid Margolin <jaridmargolin@gmail.com>",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jaridmargolin/semver.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaridmargolin/semver.js"
+  },
+  "bugs": {
+    "url": "https://github.com/jaridmargolin/semver.js/issues"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "main": "dist/common/semver.js",
+  "devDependencies": {
+    "easy-build": "~0.1.0",
+    "proclaim": "~3.3.1",
+    "sinon": "~1.16.1"
+  },
+  "license": "MIT"
+}
