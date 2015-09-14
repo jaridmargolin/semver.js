@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>semver.js - Documentation</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/styles.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+  <body screen_capture_injected="true">
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="sidebar"><div class="navbar navbar-inverse" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="https://github.com/jaridmargolin/semver.js">
+      semver.js
+      <small>(v0.0.1)</small>
+      <i class="fa fa-github"></i>
+    </a>
+      <iframe class="navbar-stars" src="https://ghbtns.com/github-btn.html?user=jaridmargolin&amp;repo=semver.js&amp;type=star&amp;count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+  </div>
+</div><ul class="nav collapse navbar-collapse nav-sidebar sidebar-navbar-collapse">
+<li>
+  <a class="btn btn-first btn-last btn-active" href="./index.html">Documentation</a>
+</li>
+
+
+
+<li>
+  <a href="#getting-started">Getting Started</a>
+<ul class="nav nav-sidebar-sub">
+<li>
+  <a href="#package-managers">Package Managers</a>
+</li></ul></li><li>
+  <a href="#semver">
+  
+  semver
+</a>
+<ul class="nav nav-sidebar-sub">
+<li>
+  <a href="#isgreater">
+  
+  isGreater
+</a>
+</li><li>
+  <a href="#isless">
+  
+  isLess
+</a>
+</li><li>
+  <a href="#isequal">
+  
+  isEqual
+</a>
+</li></ul></li><li>
+  <a href="#test">Test</a>
+</li><li>
+  <a href="#contributing">Contributing</a>
+</li><li>
+  <a href="#license">License</a>
+</li></ul></div>
+ 
+      <div class="main">
+        <div class="container-fluid container-content">
+          <h2><a id="getting-started" href="#getting-started" class="anchor" name="getting-started"><span class="header-link"></span></a>Getting Started</h2><p><a href="https://travis-ci.org/jaridmargolin/semver.js.js"><img src="https://travis-ci.org/jaridmargolin/semver.js.png" alt="Build Status"></a></p>
+<h3><a id="package-managers" href="#package-managers" class="anchor" name="package-managers"><span class="header-link"></span></a>Package Managers</h3><p><strong>npm</strong>: <code>npm install semver.js</code></p>
+<p><strong>bower</strong>: <code>bower install semver.js</code></p>
+
+          <div class="documentation row">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6 col-desc"><h2>
+  <a id="semver" href="#semver" class="anchor" name="semver"><span class="header-link"></span></a>
+  semver
+</h2>
+<p>Lightweight module to compare semver versions.</p></div>
+      <div class="col-lg-6 col-usage">
+      </div>
+    </div>
+
+    <div class="row"><div class="col-lg-6 col-desc"><h3>
+  <a id="isgreater" href="#isgreater" class="anchor" name="isgreater"><span class="header-link"></span></a>
+  isGreater
+</h3>
+<p>Determine if semver a &gt; semver b.</p><div class="label label-info radius ctx-type">Function</div> <span>isGreater(firstComparator, secondComparator)</span>  <h4>Parameters</h4>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width:15%">Name</th>
+        <th style="width:15%">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>firstComparator</td>
+        <td>string</td>
+        <td>The semver string to compare with.</td>
+      </tr>
+      <tr>
+        <td>secondComparator</td>
+        <td>string</td>
+        <td>The semver string to compare against.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="col-lg-6 col-usage">  <pre><code>semver.isGreater(&quot;1.0.0&quot;, &quot;0.9.0&quot;);
+// true</code></pre>
+</div></div>
+    <div class="row"><div class="col-lg-6 col-desc"><h3>
+  <a id="isless" href="#isless" class="anchor" name="isless"><span class="header-link"></span></a>
+  isLess
+</h3>
+<p>Determine if semver a &lt; semver b.</p><div class="label label-info radius ctx-type">Function</div> <span>isLess(firstComparator, secondComparator)</span>  <h4>Parameters</h4>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width:15%">Name</th>
+        <th style="width:15%">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>firstComparator</td>
+        <td>string</td>
+        <td>The semver string to compare with.</td>
+      </tr>
+      <tr>
+        <td>secondComparator</td>
+        <td>string</td>
+        <td>The semver string to compare against.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="col-lg-6 col-usage">  <pre><code>semver.isLess(&quot;0.9.0&quot;, &quot;1.0.0&quot;);
+// true</code></pre>
+</div></div>
+    <div class="row"><div class="col-lg-6 col-desc"><h3>
+  <a id="isequal" href="#isequal" class="anchor" name="isequal"><span class="header-link"></span></a>
+  isEqual
+</h3>
+<p>Determine if semver a === semver b.</p><div class="label label-info radius ctx-type">Function</div> <span>isEqual(firstComparator, secondComparator)</span>  <h4>Parameters</h4>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width:15%">Name</th>
+        <th style="width:15%">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>firstComparator</td>
+        <td>string</td>
+        <td>The semver string to compare with.</td>
+      </tr>
+      <tr>
+        <td>secondComparator</td>
+        <td>string</td>
+        <td>The semver string to compare against.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="col-lg-6 col-usage">  <pre><code>semver.isEqual(&quot;1.0.0&quot;, &quot;1.0.0&quot;);
+// true</code></pre>
+</div></div>
+
+</div>
+</div>
+          <h2><a id="test" href="#test" class="anchor" name="test"><span class="header-link"></span></a>Test</h2><p>All dependencies must be installed (<code>npm install</code>)</p>
+<p><strong>Run</strong>: <code>npm test</code></p>
+
+          <h2><a id="contributing" href="#contributing" class="anchor" name="contributing"><span class="header-link"></span></a>Contributing</h2><p>In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using <a href="http://gruntjs.com/">Grunt</a>.</p>
+<p><em>Also, please don&#39;t edit files in the &quot;dist&quot; subdirectory as they are generated via Grunt. You&#39;ll find source code in the &quot;lib&quot; subdirectory!</em></p>
+
+          <h2><a id="license" href="#license" class="anchor" name="license"><span class="header-link"></span></a>License</h2><p>The MIT License (MIT) Copyright (c) Jarid Margolin &lt;jaridmargolin@gmail.com&gt;</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &quot;Software&quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/languages/javascript.min.js"></script>
+  <script src="assets/js/easy-docs.js"></script>
+
+  </body>
+</html>
