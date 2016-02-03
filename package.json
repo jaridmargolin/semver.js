@@ -16,9 +16,9 @@
   },
   "main": "dist/common/semver.js",
   "devDependencies": {
-    "easy-build": "~0.1.0",
-    "proclaim": "~3.3.1",
-    "sinon": "~1.16.1"
+    "easy-build": "~0.3.0",
+    "proclaim": "~3.4.0",
+    "sinon": "~1.17.3"
   },
   "license": "MIT"
 }
