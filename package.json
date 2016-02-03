@@ -2,7 +2,7 @@
   "name": "semver.js",
   "description": "Lightweight module to compare semver versions.",
   "author": "Jarid Margolin <jaridmargolin@gmail.com>",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "homepage": "https://github.com/jaridmargolin/semver.js",
   "repository": {
     "type": "git",
