@@ -15,33 +15,49 @@ var semver = require('semver');
 
 
 /* -----------------------------------------------------------------------------
- * helpers
- * ---------------------------------------------------------------------------*/
-
-var assertGreaterCases = function (comparator, methodName) {
-  assert[methodName](semver[comparator]('1', '0'));
-  assert[methodName](semver[comparator]('1.1', '1.0'));
-  assert[methodName](semver[comparator]('1.1.1', '1.1.0'));
-};
-
-var assertLessCases = function (comparator, methodName) {
-  assert[methodName](semver[comparator]('0', '1'));
-  assert[methodName](semver[comparator]('1.0', '1.1'));
-  assert[methodName](semver[comparator]('1.1.0', '1.1.1'));
-};
-
-var assertEqualCases = function (comparator, methodName) {
-  assert[methodName](semver[comparator]('1', '1'));
-  assert[methodName](semver[comparator]('1.1', '1.1'));
-  assert[methodName](semver[comparator]('1.1.1', '1.1.1'));
-};
-
-
-/* -----------------------------------------------------------------------------
  * test
  * ---------------------------------------------------------------------------*/
 
 describe('semver.js', function () {
+
+  /* ---------------------------------------------------------------------------
+   * compare
+   * -------------------------------------------------------------------------*/
+
+  describe('compare()', function () {
+
+    it('Should return 0 if a === b.', function () {
+      assert.equal(0, semver.compare('1', '1'));
+      assert.equal(0, semver.compare('1.1', '1.1'));
+      assert.equal(0, semver.compare('1.1.1', '1.1.1'));
+
+      assert.equal(0, semver.compare('1.2.1', '1.1.1', 'major'));
+      assert.equal(0, semver.compare('1.1.2', '1.1.1', 'minor'));
+      assert.equal(0, semver.compare('1.1.1', '1.1.1', 'patch'));
+    });
+
+    it('Should return 1 if a > b.', function () {
+      assert.equal(1, semver.compare('2', '1'));
+      assert.equal(1, semver.compare('1.2', '1.1'));
+      assert.equal(1, semver.compare('1.1.2', '1.1.1'));
+
+      assert.equal(1, semver.compare('2.1.1', '1.1.1', 'major'));
+      assert.equal(1, semver.compare('1.2.1', '1.1.1', 'minor'));
+      assert.equal(1, semver.compare('1.1.2', '1.1.1', 'patch'));
+    });
+
+    it('Should return -1 if a < b.', function () {
+      assert.equal(-1, semver.compare('1', '2'));
+      assert.equal(-1, semver.compare('1.1', '1.2'));
+      assert.equal(-1, semver.compare('1.1.1', '1.1.2'));
+
+      assert.equal(-1, semver.compare('1.1.1', '2.1.1', 'major'));
+      assert.equal(-1, semver.compare('1.1.1', '1.2.1', 'minor'));
+      assert.equal(-1, semver.compare('1.1.1', '1.1.2', 'patch'));
+    });
+
+  });
+
 
   /* ---------------------------------------------------------------------------
    * isGreater
@@ -50,15 +66,15 @@ describe('semver.js', function () {
   describe('isGreater()', function () {
 
     it('Should return true if a > b.', function () {
-      assertGreaterCases('isGreater', 'isTrue');
+      assert.isTrue(semver.isGreater('2', '1'));
     });
 
-    it('Should return false if a > b.', function () {
-      assertLessCases('isGreater', 'isFalse');
+    it('Should return false if a < b.', function () {
+      assert.isFalse(semver.isGreater('1', '2'));
     });
 
     it('Should return false if a == b.', function () {
-      assertEqualCases('isGreater', 'isFalse');
+      assert.isFalse(semver.isGreater('1', '1'));
     });
 
   });
@@ -68,39 +84,39 @@ describe('semver.js', function () {
    * isLess
    * -------------------------------------------------------------------------*/
 
-  describe('isGreater()', function () {
+  describe('isLess()', function () {
 
     it('Should return false if a > b.', function () {
-      assertGreaterCases('isLess', 'isFalse');
+      assert.isFalse(semver.isLess('2', '1'));
     });
 
-    it('Should return true if a > b.', function () {
-      assertLessCases('isLess', 'isTrue');
+    it('Should return true if a < b.', function () {
+      assert.isTrue(semver.isLess('1', '2'));
     });
 
     it('Should return false if a == b.', function () {
-      assertEqualCases('isLess', 'isFalse');
+      assert.isFalse(semver.isLess('1', '1'));
     });
 
   });
 
 
   /* ---------------------------------------------------------------------------
-   * isEqual
+   * equal
    * -------------------------------------------------------------------------*/
 
-  describe('isGreater()', function () {
+  describe('equal()', function () {
 
     it('Should return false if a > b.', function () {
-      assertGreaterCases('isEqual', 'isFalse');
+      assert.isFalse(semver.isEqual('2', '1'));
     });
 
-    it('Should return false if a > b.', function () {
-      assertLessCases('isEqual', 'isFalse');
+    it('Should return false if a < b.', function () {
+      assert.isFalse(semver.isEqual('1', '2'));
     });
 
     it('Should return true if a == b.', function () {
-      assertEqualCases('isEqual', 'isTrue');
+      assert.isTrue(semver.isEqual('1', '1'));
     });
 
   });

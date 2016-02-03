@@ -7,32 +7,6 @@ define(function (require) {
 
 
 /* -----------------------------------------------------------------------------
- * helpers
- * ---------------------------------------------------------------------------*/
-
-// Internal method utilzed by public facing methods in order to compare
-// semver versions. Returns 1 is a > b. Returns -1 if b > a. Returns
-// 0 if a == b.
-var compare = function (a, b) {
-  var pa = a.split('.');
-  var pb = b.split('.');
-
-  for (var i = 0; i < 3; i++) {
-    na = Number(pa[i]);
-    nb = Number(pb[i]);
-    if (na > nb || !isNaN(na) && isNaN(nb)) {
-      return 1;
-    }
-    if (na < nb || isNaN(na) && !isNaN(nb)) {
-      return -1;
-    }
-  }
-
-  return 0;
-};
-
-
-/* -----------------------------------------------------------------------------
  * semver
  * ---------------------------------------------------------------------------*/
 
@@ -49,6 +23,40 @@ return {
    * @public
    * @memberof semver
    *
+   * @desc Compare two semver values. Optionally accepts param to force
+   *   comparison based on passed specificity (major, minor, patch).
+   *
+   * @param {string} firstComparator - The semver string to compare with.
+   * @param {string} secondComparator - The semver string to compare against.
+   * @param {string} [specificity=patch] - major || minor || patch.
+   */
+  compare: function (a, b, specificity) {
+    var pa = a.split('.');
+    var pb = b.split('.');
+    var sentinels = {
+      'major': 1,
+      'minor': 2,
+      'patch': 3
+    };
+
+    for (var i = 0; i < (sentinels[specificity] || 3); i++) {
+      na = Number(pa[i]);
+      nb = Number(pb[i]);
+      if (na > nb || !isNaN(na) && isNaN(nb)) {
+        return 1;
+      }
+      if (na < nb || isNaN(na) && !isNaN(nb)) {
+        return -1;
+      }
+    }
+
+    return 0;
+  },
+
+  /**
+   * @public
+   * @memberof semver
+   *
    * @desc Determine if semver a > semver b.
    *
    * @example
@@ -57,9 +65,10 @@ return {
    *
    * @param {string} firstComparator - The semver string to compare with.
    * @param {string} secondComparator - The semver string to compare against.
+   * @param {string} [specificity=patch] - major || minor || patch.
    */
-  isGreater: function (a, b) {
-    return compare(a, b) === 1;
+  isGreater: function (a, b, specificity) {
+    return this.compare(a, b, specificity) === 1;
   },
 
   /**
@@ -74,9 +83,10 @@ return {
    *
    * @param {string} firstComparator - The semver string to compare with.
    * @param {string} secondComparator - The semver string to compare against.
+   * @param {string} [specificity=patch] - major || minor || patch.
    */
-  isLess: function (a, b) {
-    return compare(a, b) === -1;
+  isLess: function (a, b, specificity) {
+    return this.compare(a, b, specificity) === -1;
   },
 
   /**
@@ -91,9 +101,10 @@ return {
    *
    * @param {string} firstComparator - The semver string to compare with.
    * @param {string} secondComparator - The semver string to compare against.
+   * @param {string} [specificity=patch] - major || minor || patch.
    */
-  isEqual: function (a, b) {
-    return compare(a, b) === 0;
+  isEqual: function (a, b, specificity) {
+    return this.compare(a, b, specificity) === 0;
   }
 
 };
