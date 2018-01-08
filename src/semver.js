@@ -33,6 +33,7 @@ return {
   compare: function (a, b, specificity) {
     var pa = a.split('.');
     var pb = b.split('.');
+    var na, nb;
     var sentinels = {
       'major': 1,
       'minor': 2,
